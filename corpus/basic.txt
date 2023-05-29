@@ -1,0 +1,79 @@
+================================================================================
+Basic file
+================================================================================
+
+&title=Testing
+&artist=Fucuk
+&des=This is a string
+
+&lv_1=1
+&inote_1=(120){8}C,E
+
+--------------------------------------------------------------------------------
+
+(chart_file
+    (title
+        (title_key)
+        value: (string))
+    (artist
+        (artist_key)
+        value: (string))
+    (extra
+        (extra_key)
+        value: (string))
+    (chart_lvl
+        (chart_lvl_key)
+        chart_index: (integer)
+        value: (string))
+    (chart
+        (chart_key)
+        chart_index: (integer)
+        value: (bpm
+            (number))
+        value: (divisor
+            division: (number))
+        value: (touch
+            (touch_position))
+        value: (tick)
+        value: (endmark)))
+
+================================================================================
+Basic file (no endmark w/ comment)
+================================================================================
+
+&title=Testing
+&artist=Fucuk
+&des=This is a string
+|| This is a comment
+
+&lv_1=1
+&inote_1=(120){8}C,
+
+--------------------------------------------------------------------------------
+
+(chart_file
+    (title
+        (title_key)
+        value: (string))
+    (artist
+        (artist_key)
+        value: (string))
+    (extra
+        (extra_key)
+        value: (string))
+    (comment
+        (string))
+    (chart_lvl
+        (chart_lvl_key)
+        chart_index: (integer)
+        value: (string))
+    (chart
+        (chart_key)
+        chart_index: (integer)
+        value: (bpm
+            (number))
+        value: (divisor
+            division: (number))
+        value: (touch
+            (touch_position))
+        value: (tick)))

@@ -1,0 +1,778 @@
+[
+  {
+    "type": "artist",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "artist_key",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "bpm",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "chain_slide",
+    "named": true,
+    "fields": {
+      "end_position": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "button_position",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "chain_slide",
+          "named": true
+        },
+        {
+          "type": "duration",
+          "named": true
+        },
+        {
+          "type": "slide_variant",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "chart",
+    "named": true,
+    "fields": {
+      "chart_index": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "bpm",
+            "named": true
+          },
+          {
+            "type": "divisor",
+            "named": true
+          },
+          {
+            "type": "each",
+            "named": true
+          },
+          {
+            "type": "endmark",
+            "named": true
+          },
+          {
+            "type": "hold",
+            "named": true
+          },
+          {
+            "type": "pseudo_each",
+            "named": true
+          },
+          {
+            "type": "slide",
+            "named": true
+          },
+          {
+            "type": "tap",
+            "named": true
+          },
+          {
+            "type": "tick",
+            "named": true
+          },
+          {
+            "type": "touch",
+            "named": true
+          },
+          {
+            "type": "touch_hold",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "chart_key",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "chart_file",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "artist",
+          "named": true
+        },
+        {
+          "type": "chart",
+          "named": true
+        },
+        {
+          "type": "chart_lvl",
+          "named": true
+        },
+        {
+          "type": "extra",
+          "named": true
+        },
+        {
+          "type": "first",
+          "named": true
+        },
+        {
+          "type": "title",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "chart_lvl",
+    "named": true,
+    "fields": {
+      "chart_index": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "chart_lvl_key",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "colon",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "comment",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "divisor",
+    "named": true,
+    "fields": {
+      "absolute": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "number",
+            "named": true
+          }
+        ]
+      },
+      "division": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "number",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "double_pound",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "duration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "colon",
+          "named": true
+        },
+        {
+          "type": "double_pound",
+          "named": true
+        },
+        {
+          "type": "first_number",
+          "named": true
+        },
+        {
+          "type": "pound",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "extra",
+    "named": true,
+    "fields": {
+      "chart_index": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "extra_key",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "first",
+    "named": true,
+    "fields": {
+      "chart_index": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "number",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "first_key",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "first_number",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "hold",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "button_position",
+          "named": true
+        },
+        {
+          "type": "duration",
+          "named": true
+        },
+        {
+          "type": "hold_modifiers",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "one_line_string",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "pound",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "sibling_slide",
+    "named": true,
+    "fields": {
+      "end_position": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "button_position",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "chain_slide",
+          "named": true
+        },
+        {
+          "type": "duration",
+          "named": true
+        },
+        {
+          "type": "sibling_slide",
+          "named": true
+        },
+        {
+          "type": "slide_variant",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "slide",
+    "named": true,
+    "fields": {
+      "end_position": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "button_position",
+            "named": true
+          }
+        ]
+      },
+      "start_position": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "button_position",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "chain_slide",
+          "named": true
+        },
+        {
+          "type": "duration",
+          "named": true
+        },
+        {
+          "type": "sibling_slide",
+          "named": true
+        },
+        {
+          "type": "slide_modifiers",
+          "named": true
+        },
+        {
+          "type": "slide_variant",
+          "named": true
+        },
+        {
+          "type": "tap_modifiers",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "tap",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "button_position",
+          "named": true
+        },
+        {
+          "type": "tap_modifiers",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "title",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "title_key",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "touch",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "touch_modifiers",
+          "named": true
+        },
+        {
+          "type": "touch_position",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "touch_hold",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "duration",
+          "named": true
+        },
+        {
+          "type": "touch_modifiers",
+          "named": true
+        },
+        {
+          "type": "touch_position",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "touch_position",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "#",
+    "named": false
+  },
+  {
+    "type": "##",
+    "named": false
+  },
+  {
+    "type": "&",
+    "named": false
+  },
+  {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
+  },
+  {
+    "type": "*",
+    "named": false
+  },
+  {
+    "type": ":",
+    "named": false
+  },
+  {
+    "type": "=",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
+    "named": false
+  },
+  {
+    "type": "_",
+    "named": false
+  },
+  {
+    "type": "artist_key",
+    "named": true
+  },
+  {
+    "type": "button_position",
+    "named": true
+  },
+  {
+    "type": "chart_key",
+    "named": true
+  },
+  {
+    "type": "chart_lvl_key",
+    "named": true
+  },
+  {
+    "type": "each",
+    "named": true
+  },
+  {
+    "type": "endmark",
+    "named": true
+  },
+  {
+    "type": "extra_key",
+    "named": true
+  },
+  {
+    "type": "first_key",
+    "named": true
+  },
+  {
+    "type": "h",
+    "named": false
+  },
+  {
+    "type": "hold_modifiers",
+    "named": true
+  },
+  {
+    "type": "integer",
+    "named": true
+  },
+  {
+    "type": "number",
+    "named": true
+  },
+  {
+    "type": "pseudo_each",
+    "named": true
+  },
+  {
+    "type": "slide_modifiers",
+    "named": true
+  },
+  {
+    "type": "slide_variant",
+    "named": true
+  },
+  {
+    "type": "string",
+    "named": true
+  },
+  {
+    "type": "tap_modifiers",
+    "named": true
+  },
+  {
+    "type": "tick",
+    "named": true
+  },
+  {
+    "type": "title_key",
+    "named": true
+  },
+  {
+    "type": "touch_modifiers",
+    "named": true
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "||",
+    "named": false
+  },
+  {
+    "type": "}",
+    "named": false
+  }
+]

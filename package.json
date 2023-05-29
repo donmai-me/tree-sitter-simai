@@ -1,0 +1,25 @@
+{
+  "name": "tree-sitter-simai",
+  "version": "0.1.0",
+  "description": "Simai grammar for tree-sitter",
+  "main": "bindings/node",
+  "repository": "https://github.com/donmai-me/tree-sitter-simai",
+  "scripts": {
+    "build": "tree-sitter generate && node-gyp build",
+    "test": "tree-sitter test"
+  },
+  "author": "donmai",
+  "license": "MIT",
+  "dependencies": {
+    "nan": "^2.17.0"
+  },
+  "tree-sitter": [
+    {
+      "scope": "maidata.txt",
+      "file-types": [
+        "text"
+      ],
+      "first-line-regex": "&[a-z]+(_\\d+)?=.*"
+    }
+  ]
+}
