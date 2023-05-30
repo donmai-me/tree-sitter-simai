@@ -118,3 +118,20 @@ Touch hold note combinations
     (touch_hold
       (touch_position))
     (tick)))
+
+================================================================================
+No starting bpm and divisor is an error
+================================================================================
+
+&inote_135=Cfh[2:1],
+
+--------------------------------------------------------------------------------
+
+(chart_file
+  (ERROR
+    (chart_key)
+    (integer)
+    (touch_modifiers)
+    (button_position)
+    (button_position)
+    (tick)))

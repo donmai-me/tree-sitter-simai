@@ -78,13 +78,24 @@ module.exports = grammar({
 
         extra_key: $ => /[a-z]+/,
 
-        chart: $ => seq(
+        chart: $ => prec.right(seq(
             $.chart_key,
             "_",
             field("chart_index", $.integer),
             "=",
-            field("value", seq($._fragment, optional(newline)))
-        ),
+            field("value", seq(
+                $.bpm,
+                optional(newline),
+                $.divisor,
+                optional(newline),
+                optional($._note),
+                $.tick,
+                optional($._fragment),
+                optional(newline),
+                optional($.endmark),
+                optional(newline),
+            ))
+        )),
 
         chart_key: $ => "inote",
 
@@ -99,7 +110,6 @@ module.exports = grammar({
             prec.right($._note),
             prec.right(2, seq($._fragment, optional(newline), $.tick, optional(newline))),
             prec.right(2, seq($._fragment, optional(newline), $.tick, optional(newline), $._fragment)),
-            prec.right(3, seq($._fragment, optional(newline), $.tick, optional(newline), $.endmark))
         )),
 
         _bpm_divisor: $ => prec.right(choice(
