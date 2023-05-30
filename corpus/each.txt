@@ -1,0 +1,66 @@
+================================================================================
+8-button EACH (no separator)
+================================================================================
+
+&inote_1=12345678,
+
+--------------------------------------------------------------------------------
+
+(chart_file
+  (chart
+    (chart_key)
+    (integer)
+    (tap
+      (button_position))
+    (tap
+      (button_position))
+    (tap
+      (button_position))
+    (tap
+      (button_position))
+    (tap
+      (button_position))
+    (tap
+      (button_position))
+    (tap
+      (button_position))
+    (tap
+      (button_position))
+    (tick)))
+
+================================================================================
+8-button EACH (separator)
+================================================================================
+
+&inote_1=1/2/3/4/5/6/7/8,
+
+--------------------------------------------------------------------------------
+
+(chart_file
+  (chart
+    (chart_key)
+    (integer)
+    (tap
+      (button_position))
+    (each)
+    (tap
+      (button_position))
+    (each)
+    (tap
+      (button_position))
+    (each)
+    (tap
+      (button_position))
+    (each)
+    (tap
+      (button_position))
+    (each)
+    (tap
+      (button_position))
+    (each)
+    (tap
+      (button_position))
+    (each)
+    (tap
+      (button_position))
+    (tick)))
