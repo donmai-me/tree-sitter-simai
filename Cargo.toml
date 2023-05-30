@@ -1,7 +1,7 @@
 [package]
 name = "tree-sitter-simai"
 description = "simai grammar for the tree-sitter parsing library"
-version = "0.0.1"
+version = "0.2.0"
 keywords = ["incremental", "parsing", "simai"]
 categories = ["parsing", "text-editors"]
 repository = "https://github.com/donmai-me/tree-sitter-simai"

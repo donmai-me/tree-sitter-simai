@@ -1,11 +1,56 @@
 const newline = /(\r?\n)+/;
 
+// We need these functions because Simai is complicated
+
+function generate_combinations(array) {
+    return array.reduce(
+        (subsets, value) => subsets.concat(
+            subsets.map(set => [value, ...set])
+        ),
+        [[]]
+    );
+}
+
+function permute(permutation) {
+    const length = permutation.length;
+    const result = [permutation.slice()];
+    const c = new Array(length).fill(0);
+    let i = 1;
+
+    while (i < length) {
+        if (c[i] < i) {
+            const k = i % 2 && c[i];
+            const p = permutation[i];
+            permutation[i] = permutation[k];
+            permutation[k] = p;
+            ++c[i];
+            i = 1;
+            result.push(permutation.slice());
+        } else {
+            c[i] = 0;
+            ++i;
+        }
+    }
+
+    return result;
+}
+
+// Makes a state machine that `choice`s all possible combinations
+function modifier_expander(input) {
+    const chars = Array.from(input);
+    const combinations = generate_combinations(chars).slice(1);
+    const permutations = permute(chars);
+    const seqs = combinations.flatMap(c => permute(c).map(s => seq(...s)));
+
+    return choice(...chars, ...seqs);
+}
+
 module.exports = grammar({
     name: 'simai',
 
     extras: $ => [
         "\u{feff}",
-        /[ \t]/,
+        /[ \t\r\n]/,
         $.comment,
     ],
 
@@ -22,17 +67,14 @@ module.exports = grammar({
     rules: {
         chart_file: $ => repeat($._key_val),
 
-        _key_val: $ => choice(
-            seq("&", choice(
-                $.title,
-                $.artist,
-                $.first,
-                $.chart_lvl,
-                $.chart,
-                $.extra,
-            )),
-            newline,
-        ),
+        _key_val: $ => seq("&", choice(
+            $.title,
+            $.artist,
+            $.first,
+            $.chart_lvl,
+            $.chart,
+            $.extra,
+        )),
 
         title: $ => seq(
             $.title_key,
@@ -85,15 +127,11 @@ module.exports = grammar({
             "=",
             field("value", seq(
                 $.bpm,
-                optional(newline),
                 $.divisor,
-                optional(newline),
                 optional($._note),
                 $.tick,
                 optional($._fragment),
-                optional(newline),
                 optional($.endmark),
-                optional(newline),
             ))
         )),
 
@@ -104,18 +142,17 @@ module.exports = grammar({
         _fragment: $ => prec.right(choice(
             prec.right(seq(
                 $._bpm_divisor,
-                optional(newline),
                 optional($._note),
             )),
             prec.right($._note),
-            prec.right(2, seq($._fragment, optional(newline), $.tick, optional(newline))),
-            prec.right(2, seq($._fragment, optional(newline), $.tick, optional(newline), $._fragment)),
+            prec.right(2, seq($._fragment, $.tick)),
+            prec.right(2, seq($._fragment, $.tick, $._fragment)),
         )),
 
         _bpm_divisor: $ => prec.right(choice(
             $.bpm,
             $.divisor,
-            prec.right(1, seq($.bpm, optional(newline), $.divisor))
+            prec.right(1, seq($.bpm, $.divisor))
         )),
 
         _note: $ => prec.right(choice(
@@ -124,10 +161,8 @@ module.exports = grammar({
                     $.tap,
                     $.fake_note,
                 ),
-                optional(newline),
                 repeat1(choice($.tap, $.fake_note)),
                 optional(seq(
-                    optional(newline),
                     choice(
                         $.each,
                         $.pseudo_each
@@ -145,12 +180,10 @@ module.exports = grammar({
                     $.hold
                 ),
                 repeat(seq(
-                    optional(newline),
                     choice(
                         $.each,
                         $.pseudo_each
                     ),
-                    optional(newline),
                     choice(
                         $.fake_note,
                         $.touch_hold,
@@ -184,6 +217,7 @@ module.exports = grammar({
             "h",
             optional($.touch_modifiers),
             optional($.duration),
+            optional($.touch_modifiers),
         )),
 
         touch: $ => prec(1, seq(
@@ -191,15 +225,16 @@ module.exports = grammar({
             optional($.touch_modifiers),
         )),
 
-        hold: $ => prec(2, seq(
+        hold: $ => prec.right(2, seq(
             $.button_position,
             optional($.hold_modifiers),
             "h",
             optional($.hold_modifiers),
             optional($.duration),
+            optional($.hold_modifiers),
         )),
 
-        tap: $ => prec(1, seq(
+        tap: $ => prec.right(3, seq(
             $.button_position,
             optional($.tap_modifiers)
         )),
@@ -251,15 +286,20 @@ module.exports = grammar({
 
         button_position: $ => /[1-8]/,
 
-        hold_modifiers: $ => /[bex]+/,
+        // hold_modifiers: $ => /[bex]+/,
+        hold_modifiers: $ => prec.right(2, modifier_expander("bx")),
 
-        star_tap_modifiers: $ => /[?bex]+/,
+        // star_tap_modifiers: $ => /[?bex]+/,
+        star_tap_modifiers: $ => prec.right(1, modifier_expander("?b@x")),
 
-        tap_modifiers: $ => /[bex$]+/,
+        // tap_modifiers: $ => /[bex$]+/,
+        tap_modifiers: $ => prec.right(modifier_expander("bx$")),
 
-        slide_modifiers: $ => /[b@ex?$!]+/,
+        // slide_modifiers: $ => /[b@ex?$!]+/,
+        slide_modifiers: $ => prec.right(modifier_expander("b$!")),
 
-        touch_modifiers: $ => /[f]+/,
+        // touch_modifiers: $ => /[f]+/,
+        touch_modifiers: $ => modifier_expander("f"),
 
         slide_variant: $ => /[-^<>szvw]|(p{1,2})|(q{1,2})|(V[1-8])/,
 
@@ -289,19 +329,17 @@ module.exports = grammar({
             $.number
         ),
 
-        comment: $ => seq("||", $.string, /\r?\n/),
+        comment: $ => seq("||", $.string),
 
         string: $ => /[^\r\n]*/,
         one_line_string: $ => seq(/[^\r\n&\|][^\r\n]*/, /\r?\n/),
 
-        multiline_string: $ => seq($.string, newline, repeat(choice(
-            prec.left(2, seq($.comment, optional(newline))),
+        multiline_string: $ => seq($.string, newline, repeat(
             prec.left(1, seq($.one_line_string, newline))
-        ))),
+        )),
 
         number: $ => /([0-9]*[.])?[0-9]+/,
 
         integer: $ => /\d+/,
     },
 });
-

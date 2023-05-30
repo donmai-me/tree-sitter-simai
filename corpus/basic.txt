@@ -120,6 +120,85 @@ Touch hold note combinations
     (tick)))
 
 ================================================================================
+Tap note, hold note, and modifiers
+================================================================================
+
+&inote_135=(120.5){4}12,3x,4b,5bx,6h,7h[4:2],8xh[2:1],
+1hb[#0.32],2hx[#0.3]/3bhx[4:2],
+
+--------------------------------------------------------------------------------
+
+(chart_file
+  (chart
+    (chart_key)
+    (integer)
+    (bpm
+      (number))
+    (divisor
+      (number))
+    (tap
+      (button_position))
+    (tap
+      (button_position))
+    (tick)
+    (tap
+      (button_position)
+      (tap_modifiers))
+    (tick)
+    (tap
+      (button_position)
+      (tap_modifiers))
+    (tick)
+    (tap
+      (button_position)
+      (tap_modifiers))
+    (tick)
+    (hold
+      (button_position))
+    (tick)
+    (hold
+      (button_position)
+      (duration
+        (first_number
+          (number))
+        (colon
+          (number))))
+    (tick)
+    (hold
+      (button_position)
+      (hold_modifiers)
+      (duration
+        (first_number
+          (number))
+        (colon
+          (number))))
+    (tick)
+    (hold
+      (button_position)
+      (hold_modifiers)
+      (duration
+        (pound
+          (number))))
+    (tick)
+    (hold
+      (button_position)
+      (hold_modifiers)
+      (duration
+        (pound
+          (number))))
+    (each)
+    (hold
+      (button_position)
+      (hold_modifiers)
+      (hold_modifiers)
+      (duration
+        (first_number
+          (number))
+        (colon
+          (number))))
+    (tick)))
+
+================================================================================
 No starting bpm and divisor is an error
 ================================================================================
 
@@ -131,7 +210,6 @@ No starting bpm and divisor is an error
   (ERROR
     (chart_key)
     (integer)
-    (touch_modifiers)
     (button_position)
     (button_position)
     (tick)))

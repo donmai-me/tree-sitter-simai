@@ -438,6 +438,11 @@
     }
   },
   {
+    "type": "hold_modifiers",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "one_line_string",
     "named": true,
     "fields": {}
@@ -552,6 +557,16 @@
     }
   },
   {
+    "type": "slide_modifiers",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "star_tap_modifiers",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "tap",
     "named": true,
     "fields": {},
@@ -569,6 +584,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "tap_modifiers",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "title",
@@ -639,9 +659,18 @@
     }
   },
   {
+    "type": "touch_modifiers",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "touch_position",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "!",
+    "named": false
   },
   {
     "type": "#",
@@ -649,6 +678,10 @@
   },
   {
     "type": "##",
+    "named": false
+  },
+  {
+    "type": "$",
     "named": false
   },
   {
@@ -676,6 +709,14 @@
     "named": false
   },
   {
+    "type": "?",
+    "named": false
+  },
+  {
+    "type": "@",
+    "named": false
+  },
+  {
     "type": "[",
     "named": false
   },
@@ -690,6 +731,10 @@
   {
     "type": "artist_key",
     "named": true
+  },
+  {
+    "type": "b",
+    "named": false
   },
   {
     "type": "button_position",
@@ -716,6 +761,10 @@
     "named": true
   },
   {
+    "type": "f",
+    "named": false
+  },
+  {
     "type": "fake_note",
     "named": true
   },
@@ -726,10 +775,6 @@
   {
     "type": "h",
     "named": false
-  },
-  {
-    "type": "hold_modifiers",
-    "named": true
   },
   {
     "type": "integer",
@@ -744,23 +789,11 @@
     "named": true
   },
   {
-    "type": "slide_modifiers",
-    "named": true
-  },
-  {
     "type": "slide_variant",
     "named": true
   },
   {
-    "type": "star_tap_modifiers",
-    "named": true
-  },
-  {
     "type": "string",
-    "named": true
-  },
-  {
-    "type": "tap_modifiers",
     "named": true
   },
   {
@@ -772,8 +805,8 @@
     "named": true
   },
   {
-    "type": "touch_modifiers",
-    "named": true
+    "type": "x",
+    "named": false
   },
   {
     "type": "{",
