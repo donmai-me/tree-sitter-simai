@@ -1,0 +1,127 @@
+================================================================================
+Break slide (Majdata style)
+================================================================================
+
+&inote_1=(170){4}2-4b[8:1],
+
+--------------------------------------------------------------------------------
+
+(chart_file
+  (chart
+    (chart_key)
+    (integer)
+    (bpm
+      (number))
+    (divisor
+      (number))
+    (slide
+      (button_position)
+      (slide_variant)
+      (button_position)
+      (slide_modifiers)
+      (duration
+        (first_number
+          (number))
+        (colon
+          (number))))
+    (tick)))
+
+================================================================================
+Break slide (Simai style)
+================================================================================
+
+&inote_1=(170){4}2-4[8:1]b,
+
+--------------------------------------------------------------------------------
+
+(chart_file
+  (chart
+    (chart_key)
+    (integer)
+    (bpm
+      (number))
+    (divisor
+      (number))
+    (slide
+      (button_position)
+      (slide_variant)
+      (button_position)
+      
+      (duration
+        (first_number
+          (number))
+        (colon
+          (number)))
+      (slide_modifiers))
+    (tick)))
+
+================================================================================
+All 6 possible combinations of a break ex hold
+================================================================================
+
+&inote_1=(170){4}2bxh[4:1],2bhx[4:1],2xbh[4:1],2xhb[4:1],2hbx[4:1],2hxb[4:1],
+
+--------------------------------------------------------------------------------
+
+(chart_file
+  (chart
+    (chart_key)
+    (integer)
+    (bpm
+      (number))
+    (divisor
+      (number))
+    (hold
+      (button_position)
+      (hold_modifiers)
+      (duration
+        (first_number
+          (number))
+        (colon
+          (number))))
+    (tick)
+    (hold
+      (button_position)
+      (hold_modifiers)
+      (duration
+        (first_number
+          (number))
+        (colon
+          (number))))
+    (tick)
+    (hold
+      (button_position)
+      (hold_modifiers)
+      (duration
+        (first_number
+          (number))
+        (colon
+          (number))))
+    (tick)
+    (hold
+      (button_position)
+      (hold_modifiers)
+      (duration
+        (first_number
+          (number))
+        (colon
+          (number))))
+    (tick)
+    (hold
+      (button_position)
+      (hold_modifiers)
+      (duration
+        (first_number
+          (number))
+        (colon
+          (number))))
+    (tick)
+    (hold
+      (button_position)
+      (hold_modifiers)
+      (duration
+        (first_number
+          (number))
+        (colon
+          (number))))
+    (tick)))
