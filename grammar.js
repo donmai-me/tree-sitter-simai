@@ -39,10 +39,9 @@ function permute(permutation) {
 function modifier_expander(input) {
     const chars = Array.from(input);
     const combinations = generate_combinations(chars).slice(1);
-    const permutations = permute(chars);
     const seqs = combinations.flatMap(c => permute(c).map(s => seq(...s)));
 
-    return choice(...chars, ...seqs);
+    return choice(...seqs);
 }
 
 module.exports = grammar({
