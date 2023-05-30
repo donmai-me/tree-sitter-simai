@@ -42,8 +42,7 @@
       (number))
     (divisor
       (number))
-    (tap
-      (button_position))
+    (fake_note)
     (each)
     (tap
       (button_position))

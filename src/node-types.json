@@ -109,6 +109,10 @@
             "named": true
           },
           {
+            "type": "fake_note",
+            "named": true
+          },
+          {
             "type": "hold",
             "named": true
           },
@@ -541,7 +545,7 @@
           "named": true
         },
         {
-          "type": "tap_modifiers",
+          "type": "star_tap_modifiers",
           "named": true
         }
       ]
@@ -712,6 +716,10 @@
     "named": true
   },
   {
+    "type": "fake_note",
+    "named": true
+  },
+  {
     "type": "first_key",
     "named": true
   },
@@ -741,6 +749,10 @@
   },
   {
     "type": "slide_variant",
+    "named": true
+  },
+  {
+    "type": "star_tap_modifiers",
     "named": true
   },
   {

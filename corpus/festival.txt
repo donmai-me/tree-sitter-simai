@@ -83,6 +83,7 @@ All 6 possible combinations of a break ex hold
     (hold
       (button_position)
       (hold_modifiers)
+      (hold_modifiers)
       (duration
         (first_number
           (number))
@@ -100,6 +101,7 @@ All 6 possible combinations of a break ex hold
     (tick)
     (hold
       (button_position)
+      (hold_modifiers)
       (hold_modifiers)
       (duration
         (first_number

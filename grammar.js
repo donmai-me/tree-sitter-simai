@@ -110,9 +110,12 @@ module.exports = grammar({
 
         _note: $ => prec.right(choice(
             prec.right(seq( // For cursed notation like `23`
-                $.tap,
+                choice(
+                    $.tap,
+                    $.fake_note,
+                ),
                 optional(newline),
-                repeat1($.tap),
+                repeat1(choice($.tap, $.fake_note)),
                 optional(seq(
                     optional(newline),
                     choice(
@@ -124,6 +127,7 @@ module.exports = grammar({
             )),
             prec.right(1, seq(
                 choice(
+                    $.fake_note,
                     $.touch_hold,
                     $.touch,
                     $.slide,
@@ -138,6 +142,7 @@ module.exports = grammar({
                     ),
                     optional(newline),
                     choice(
+                        $.fake_note,
                         $.touch_hold,
                         $.touch,
                         $.slide,
@@ -165,6 +170,7 @@ module.exports = grammar({
 
         touch_hold: $ => prec(2, seq(
             $.touch_position,
+            optional($.touch_modifiers),
             "h",
             optional($.touch_modifiers),
             optional($.duration),
@@ -177,9 +183,10 @@ module.exports = grammar({
 
         hold: $ => prec(2, seq(
             $.button_position,
+            optional($.hold_modifiers),
             "h",
+            optional($.hold_modifiers),
             optional($.duration),
-            optional($.hold_modifiers)
         )),
 
         tap: $ => prec(1, seq(
@@ -187,11 +194,14 @@ module.exports = grammar({
             optional($.tap_modifiers)
         )),
 
+        fake_note: $ => "0",
+
         slide: $ => prec(3, seq(
             field("start_position", $.button_position),
-            optional($.tap_modifiers),
+            optional($.star_tap_modifiers),
             $.slide_variant,
             field("end_position", $.button_position),
+            optional($.slide_modifiers),
             optional($.duration),
             optional(choice(
                 $.sibling_slide,
@@ -232,6 +242,8 @@ module.exports = grammar({
         button_position: $ => /[1-8]/,
 
         hold_modifiers: $ => /[bex]+/,
+
+        star_tap_modifiers: $ => /[?bex]+/,
 
         tap_modifiers: $ => /[bex$]+/,
 

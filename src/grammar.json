@@ -553,8 +553,17 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "SYMBOL",
-                  "name": "tap"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "tap"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "fake_note"
+                    }
+                  ]
                 },
                 {
                   "type": "CHOICE",
@@ -571,8 +580,17 @@
                 {
                   "type": "REPEAT1",
                   "content": {
-                    "type": "SYMBOL",
-                    "name": "tap"
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "tap"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "fake_note"
+                      }
+                    ]
                   }
                 },
                 {
@@ -629,6 +647,10 @@
                 {
                   "type": "CHOICE",
                   "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "fake_note"
+                    },
                     {
                       "type": "SYMBOL",
                       "name": "touch_hold"
@@ -696,6 +718,10 @@
                       {
                         "type": "CHOICE",
                         "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "fake_note"
+                          },
                           {
                             "type": "SYMBOL",
                             "name": "touch_hold"
@@ -798,6 +824,18 @@
             "name": "touch_position"
           },
           {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "touch_modifiers"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
             "type": "STRING",
             "value": "h"
           },
@@ -864,6 +902,18 @@
             "name": "button_position"
           },
           {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "hold_modifiers"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
             "type": "STRING",
             "value": "h"
           },
@@ -872,7 +922,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "duration"
+                "name": "hold_modifiers"
               },
               {
                 "type": "BLANK"
@@ -884,7 +934,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "hold_modifiers"
+                "name": "duration"
               },
               {
                 "type": "BLANK"
@@ -919,6 +969,10 @@
         ]
       }
     },
+    "fake_note": {
+      "type": "STRING",
+      "value": "0"
+    },
     "slide": {
       "type": "PREC",
       "value": 3,
@@ -938,7 +992,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "tap_modifiers"
+                "name": "star_tap_modifiers"
               },
               {
                 "type": "BLANK"
@@ -956,6 +1010,18 @@
               "type": "SYMBOL",
               "name": "button_position"
             }
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "slide_modifiers"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
           },
           {
             "type": "CHOICE",
@@ -1132,6 +1198,10 @@
     "hold_modifiers": {
       "type": "PATTERN",
       "value": "[bex]+"
+    },
+    "star_tap_modifiers": {
+      "type": "PATTERN",
+      "value": "[?bex]+"
     },
     "tap_modifiers": {
       "type": "PATTERN",
